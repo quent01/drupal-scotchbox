@@ -4,6 +4,7 @@
 #
 
 source "/var/www/provision/shell/inc/variables.inc.sh"
+source "${PATH_PROVISION_SHELL}/functions.sh"
 
 # By storing the date now, we can calculate the duration of provisioning at the
 # end of this script.
@@ -15,26 +16,21 @@ start_seconds="$(date +%s)"
 # to us. If 3 attempts with a timeout of 5 seconds are not successful, then we'll
 # skip a few things further in provisioning rather than create a bunch of errors.
 if [[ "$(wget --tries=3 --timeout=5 --spider http://google.com 2>&1 | grep 'connected')" ]]; then
-	echo -e "${C_YELLOW}Network connection detected...${C_NC}"
+	alert_info "Network connection detected..."
 	ping_result="Connected"
 else
-	echo -e "${C_YELLOW}Network connection not detected. Unable to reach google.com...${C_NC}"
+	alert_info "Network connection not detected. Unable to reach google.com..."
 	ping_result="Not Connected"
 fi
 
-
-source "${PATH_PROVISION_SHELL}/inc.sh"
-
 start_provisionning
-
-parse_vagrant_config_file
-
+# drupal_provisionning
 
 end_seconds="$(date +%s)"
 provisionning_time="$(expr $end_seconds - $start_seconds)"
-echo -e "${C_YELLOW}Provisioning complete in ${provisionning_time} seconds ${C_NC}"
+alert_info "Provisioning complete in ${provisionning_time} seconds"
 if [[ $ping_result == "Connected" ]]; then
-	echo -e "${C_YELLOW}External network connection established, packages up to date.${C_NC}"
+	alert_info "External network connection established, packages up to date."
 else
-	echo -e "${C_YELLOW}No external network available. Package installation and maintenance skipped.${C_NC}"
+	alert_info "No external network available. Package installation and maintenance skipped."
 fi

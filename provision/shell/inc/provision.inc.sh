@@ -4,17 +4,30 @@
 #
 
 function start_provisionning(){
-    echo -e "${C_YELLOW}Provisioning virtual machine...${C_NC}"
-    echo -e "${C_YELLOW}===============================${C_NC}"
+    alert_info "Provisioning virtual machine..."
+    alert_info "$(alert_line)"
+    alert_info "You choose to install ${CMS} version ${CMS_VERSION} with the stack ${STACK}"
+    alert_info "Your project directory will be ${PROJECT_DIR} and web root ${WEB_ROOT}"
+    alert_info "It will work on php ${PHP_BASE_VERSION}"
 }
 
-function parse_vagrant_config_file(){
-    CMS_VERSION="$(json_get_key 'cms_version')"
-    STACK="$(json_get_key 'stack')"
-    PROJECT_DIR="$(json_get_key 'project_dir')"
-    WEB_ROOT="$(json_get_key 'web_root')"
-    PHP_BASE_VERSION="$(json_get_key 'php_base_version')"
-    echo -e "${C_YELLOW}You choose to install ${CMS} version ${CMS_VERSION} with the stack ${STACK} ${C_NC}"
-    echo -e "${C_YELLOW}Your project directory will be ${PROJECT_DIR} and web root ${WEB_ROOT} ${C_NC}"
-    echo -e "${C_YELLOW}It will work on php ${PHP_VERSION} ${C_NC}"
+function drupal_provisionning(){
+    alert_info "$(alert_line)"
+    alert_info "Provisioning Drupal..."
+    alert_info "$(alert_line)"
+
+    cd /var/www/
+    mkdir -p ${PROJECT_DIR}
+    cd "${PROJECT_DIR}"
+
+    if [[ "$(drupal_already_installed)" == "true" ]]; then
+        alert_info "Drupal ${CMS_VERSION} already installed."
+        drupal_install_dependencies
+    else
+        drupal_install
+    fi
+
+    alert_success "$(alert_line)"
+    alert_success "End Provisioning Drupal..."
+    alert_success "$(alert_line)"
 }

@@ -9,6 +9,7 @@ DB_NAME="scotchbox"
 DB_USER="root"
 DB_PASS="root"
 
+
 # Colors
 # ---------------------------------------
 C_RED='\033[0;31m'
@@ -40,3 +41,5 @@ FILE_DRUSH_ALIASES="$PATH_VAGRANT/.drush/aliases.drushrc.php"
 # Others
 # ---------------------------------------
 CMS="drupal"
+
+

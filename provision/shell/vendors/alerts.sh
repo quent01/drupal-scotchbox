@@ -9,13 +9,13 @@
 function alert() {
     level=$1
     msg=$2
-    if [ $level = '--warning']; then 
+    if [ $level == '--warning']; then 
         alert_warning $2
-    elif [ $level = '--info' ]; then
+    elif [ $level == '--info' ]; then
         alert_info $2
-    elif [ $level = '--success' ]; then
+    elif [ $level == '--success' ]; then
         alert_success $2
-    elif [ $level = '--error' ]; then
+    elif [ $level == '--error' ]; then
         alert_error $2
     else
         alert_info $2
@@ -37,7 +37,11 @@ function alert_info() {
     echo -e "${C_BLUE} ${MSG} ${C_NC}"
 }
 
-function alert_succes() {
+function alert_success() {
     MSG=$1
     echo -e "${C_GREEN} ${MSG} ${C_NC}"
+}
+
+function alert_line(){
+    echo "==============================="
 }
