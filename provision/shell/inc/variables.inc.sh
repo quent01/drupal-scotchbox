@@ -18,15 +18,20 @@ C_NC='\033[0m'              # No Color
 C_GREEN='\033[0;32m'
 C_BRN='\033[0;33m'
 C_BLUE='\033[0;34m'
-C_MAGENTA='\033[0;35m'*
+C_MAGENTA='\033[0;35m'
 C_CYAN='\033[0;36m'
 C_WHITE='\033[0;97m'
+
+# folders
+# ---------------------------------------
+FOLDER_WEB="web"
 
 # Path
 # ---------------------------------------
 PATH_A2_SITES_AVAILABLE="/etc/apache2/sites-available/"
 PATH_COMPOSER="/usr/local/bin/composer/"
 PATH_PUBLIC="/var/www/public/"
+PATH_WEB="${PATH_PUBLIC}${FOLDER_WEB}/"
 PATH_PROVISION="/var/www/provision/"
 PATH_PROVISION_SHELL="${PATH_PROVISION}shell/"
 PATH_VAGRANT="/home/vagrant/"
@@ -37,6 +42,7 @@ FILE_CONFIG="/var/www/vagrant.json"
 FILE_APACHE_CONF="$PATH_A2_SITES_AVAILABLE/001-tiz.conf"
 FILE_COMPOSER="$PATH_PUBLIC/composer.json"
 FILE_DRUSH_ALIASES="$PATH_VAGRANT/.drush/aliases.drushrc.php"
+
 
 # Others
 # ---------------------------------------

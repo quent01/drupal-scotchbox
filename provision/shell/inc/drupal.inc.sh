@@ -39,6 +39,11 @@ function drupal_install(){
         alert_success "Drupal ${CMS_VERSION} was downloaded with success."    
         drush site-install standard --db-url=mysql://${DB_USER}:${DB_PASS}@localhost/${DB_NAME} --account-name=${ADMIN_USER} --account-pass=${ADMIN_PWD}
     else
+        # we install drush in a composer.json
+        composer require drush/drush:7.x
+        alias drush=${PATH_PUBLIC}vendor/bin/drush
+        vendor/bin/drush dl drupal-7.x --drupal-project-rename="${FOLDER_WEB}"
+        # vendor/bin/drush site-install standard --db-url=mysql://${DB_USER}:${DB_PASS}@localhost/${DB_NAME} --account-name=${ADMIN_USER} --account-pass=${ADMIN_PWD}
         alert_success "Drupal ${CMS_VERSION} was downloaded with success."    
     fi
 

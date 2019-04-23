@@ -1,7 +1,6 @@
 {
-    "cms_version" : "8",
+    "cms_version" : "7",
     "stack" : "apache",
-    "project_dir": "public",
     "web_root": "web",
     "locale": "fr_FR",
     "timezone": "Europe/Paris",

@@ -22,7 +22,6 @@ installation_of_shell_dependencies
 # ---------------------------------------
 CMS_VERSION="$(json_get_key 'cms_version')"
 STACK="$(json_get_key 'stack')"
-PROJECT_DIR=$(json_get_key 'project_dir')
 WEB_ROOT="$(json_get_key 'web_root')"
 LOCALE="$(json_get_key 'locale')"
 TIMEZONE="$(json_get_key 'timezone')"
