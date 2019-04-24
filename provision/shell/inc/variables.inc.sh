@@ -26,23 +26,32 @@ C_WHITE='\033[0;97m'
 # ---------------------------------------
 FOLDER_WEB="web"
 
-# Path
-# ---------------------------------------
-PATH_A2_SITES_AVAILABLE="/etc/apache2/sites-available/"
-PATH_COMPOSER="/usr/local/bin/composer/"
-PATH_PUBLIC="/var/www/public/"
-PATH_WEB="${PATH_PUBLIC}${FOLDER_WEB}/"
-PATH_PROVISION="/var/www/provision/"
-PATH_PROVISION_SHELL="${PATH_PROVISION}shell/"
-PATH_VAGRANT="/home/vagrant/"
 
 # Filenames
 # ---------------------------------------
-FILE_CONFIG="/var/www/vagrant.json"
-FILE_APACHE_CONF="$PATH_A2_SITES_AVAILABLE/001-tiz.conf"
-FILE_COMPOSER="$PATH_PUBLIC/composer.json"
-FILE_DRUSH_ALIASES="$PATH_VAGRANT/.drush/aliases.drushrc.php"
+FILE_A2_OLD_CONF="000-default"
+FILE_A2_CUSTOM_CONF="001-custom"
+FILE_CONFIG="vagrant.json"
 
+# Path
+# ---------------------------------------
+PATH_CONFIG="/var/www/${FILE_CONFIG}"
+PATH_COMPOSER="/usr/local/bin/composer/"
+
+PATH_PUBLIC="/var/www/public/"
+PATH_WEB="${PATH_PUBLIC}${FOLDER_WEB}/"
+
+PATH_PROVISION="/var/www/provision/"
+PATH_PROVISION_SHELL="${PATH_PROVISION}shell/"
+
+PATH_A2_CUSTOM_CONF="${PATH_PROVISION}apache/${FILE_A2_CUSTOM_CONF}.conf"
+PATH_A2_SITES_AVAILABLE="/etc/apache2/sites-available/"
+
+PATH_VAGRANT="/home/vagrant/"
+
+# Others
+# ---------------------------------------
+ALERT_LINE="==============================="
 
 # Others
 # ---------------------------------------

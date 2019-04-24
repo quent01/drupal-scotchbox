@@ -1,7 +1,6 @@
 {
     "cms_version" : "7",
     "stack" : "apache",
-    "web_root": "web",
     "locale": "fr_FR",
     "timezone": "Europe/Paris",
     "php_base_version" : "7",

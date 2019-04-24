@@ -25,6 +25,8 @@ fi
 
 start_provisionning
 drupal_provisionning
+apache_editing_config
+
 
 end_seconds="$(date +%s)"
 provisionning_time="$(expr $end_seconds - $start_seconds)"
